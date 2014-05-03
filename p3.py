@@ -19,7 +19,6 @@ if n % 2 == 0:
 f=3
 mf = np.sqrt(n)
 while n>1 & f <= mf:
-    print str(n) + "   |   " + str(f)
     if n % f == 0:
         n = n/f
         lf = f
