@@ -1,5 +1,6 @@
 # Project Euler Problem 3
 # Created 5-2-2014
+# Returns the largest prime factor
 
 import sys
 import numpy as np
