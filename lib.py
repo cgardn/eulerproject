@@ -1,31 +1,32 @@
 # Utility functions for Project Euler
 # Created 5-16-2014
+# TODO make it work for 3,5
+# TODO modify to use sieve of eratosthenes
 
-def _isprime(num):
-    """
-    Returns True if num is prime
-    """
+import numpy as np
 
-    if num == 2:
-        return True
-    elif num == 3:
-        return True
-
-    for i in range(2,num):
-        if num % i == 0:
-            return False
-    return True
-        
-
-def nextprime():
+def nextprime(maxnum):
     """
     Returns next prime number in order from 2 to maxnum
-    Passing True to reset will set next prime to 2
     """
 
-    i = 3
+    sumrange = np.arange(7,maxnum,2)
+    testrange = np.arange(3,maxnum,2)
+
     yield 2
-    while True:
-        if _isprime(i):
+    yield 3
+    yield 5
+    for i in sumrange:
+        
+        spot = np.floor(np.sqrt(i))
+        if spot % 2 == 0:
+            adjust = 1
+        else:
+            adjust = 0
+
+        loc = np.where(testrange==(spot+adjust))
+            
+        if len(testrange[i % testrange[:loc[0]+1] == 0]) > 0:
+            continue
+        else:
             yield i
-        i += 2
